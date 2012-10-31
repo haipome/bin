@@ -1,0 +1,11 @@
+#!/bin/sh
+
+p=${0}
+if [ $# != 2 ]
+then
+    echo ${p}: path type, example: ${p} ./ c
+    exit 1
+fi
+
+find $1 -name "*.$2" | xargs wc -l | sed 's/^[[:space:]]*//g' | tail -n1 | cut -d ' ' -f 1
+
